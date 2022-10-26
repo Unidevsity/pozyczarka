@@ -26,6 +26,11 @@
     <%= form.check_box :borrowed, class: 'form-check-input' %>
   </div>
 
+  <div class="form-group mb-2">
+    <%= form.label :item_type, class: 'form-label' %>
+    <%= form.select :item_type, Item.item_types.keys, { include_blank: 'Select item type....' }, class: 'form-select' %>
+  </div>
+
   <div>
     <%= form.submit class: 'btn btn-success' %>
   </div>
