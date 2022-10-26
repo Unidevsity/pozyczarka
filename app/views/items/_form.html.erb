@@ -12,21 +12,21 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-check">
+    <%= form.label :active, class: 'form-check-label' %>
+    <%= form.check_box :active, class: 'form-check-input' %>
+  </div>
+
+  <div class="form-check">
+    <%= form.label :borrowed, class: 'form-check-label' %>
+    <%= form.check_box :borrowed, class: 'form-check-input' %>
   </div>
 
   <div>
-    <%= form.label :active, style: "display: block" %>
-    <%= form.check_box :active %>
-  </div>
-
-  <div>
-    <%= form.label :borrowed, style: "display: block" %>
-    <%= form.check_box :borrowed %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-success' %>
   </div>
 <% end %>
