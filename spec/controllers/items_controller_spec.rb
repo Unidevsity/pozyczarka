@@ -56,31 +56,5 @@ describe ItemsController do
     end
   end
 
-  describe 'GET #active' do
-    it 'returns http success' do
-      get :active
-      expect(response).to have_http_status(:ok)
-    end
-  end
 
-  describe 'GET #inactive' do
-    it 'returns http success' do
-      get :inactive
-      expect(response).to have_http_status(:ok)
-    end
-  end
-
-  describe 'GET #borrowed' do
-    it 'returns http status success' do
-      get :borrowed
-      expect(response).to have_http_status(:ok)
-    end
-  end
-
-  describe 'GET #on_place' do
-    it 'returns http status success' do
-      get :on_place
-      expect(response).to have_http_status(:ok)
-    end
-  end
 end
