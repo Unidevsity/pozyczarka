@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Item routes', type: :routing do
   it { expect(get: '/items').to route_to('items#index') }
   it { expect(get: '/items/1').to route_to('items#show', id: '1') }

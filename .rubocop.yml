@@ -7,14 +7,6 @@ AllCops:
   Exclude:
     - 'bin/bundle'
 
-Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'app/helpers/application_helper.rb'
-    - 'config/application.rb'
-    - 'bin/bundle'
-
 Style/IfUnlessModifier:
   Exclude:
     - 'bin/bundle'
@@ -26,3 +18,23 @@ Metrics/MethodLength:
   Max: 12
 Metrics/PerceivedComplexity:
   Max: 9
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/DescribeClass:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'lib/tasks/**/*'
+RSpec/FilePath:
+  Exclude:
+    - 'spec/rspec_methods_spec.rb'
+    - 'spec/subject_described_class_spec.rb'
+RSpec/ExpectActual:
+  Enabled: false
+Rails/FilePath:
+  Enabled: false

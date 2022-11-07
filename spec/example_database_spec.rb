@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 describe 'example database' do
   it 'creates item' do
-    item = Item.create(name: 'Book')
+    Item.create(name: 'Book')
     expect(Item.count).to eq 1
   end
 

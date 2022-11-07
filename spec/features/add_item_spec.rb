@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Add new item' do
   before do
     visit '/'

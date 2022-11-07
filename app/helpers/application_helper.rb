@@ -2,6 +2,6 @@
 
 module ApplicationHelper
   def app_title
-    "Pożyczarka"
+    'Pożyczarka'
   end
 end

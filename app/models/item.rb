@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: items
@@ -13,7 +15,7 @@
 class Item < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }
 
-  enum item_type: %i[book cd electric_device flower other]
+  enum item_type: { book: 0, cd: 1, electric_device: 2, flower: 3, other: 4 }
   validates :item_type, inclusion: { in: item_types.keys }
 
   scope :active, -> { where(active: true) }

@@ -21,25 +21,25 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   gem 'brakeman'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'faker'
   gem 'rails_best_practices', '~> 1.23', '>= 1.23.2'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
-  gem 'faker'
 end
 
 group :development do
   gem 'annotate'
-  gem 'web-console'
   gem 'hotwire-livereload'
+  gem 'web-console'
 end
 
 group :test do
-  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
-  gem 'factory_bot_rails'
-  gem 'shoulda-matchers', '~> 5.0'
-  gem 'database_cleaner-active_record'
-  gem 'rails-controller-testing'
   gem 'capybara'
+  gem 'database_cleaner-active_record'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
+  gem 'shoulda-matchers', '~> 5.0'
 end
