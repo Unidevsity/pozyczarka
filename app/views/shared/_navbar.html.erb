@@ -1,0 +1,15 @@
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <p class="mb-0 text-primary">
+    <%= current_user.email %>
+  </p>
+  <div class="navbar-nav">
+    <%= render 'shared/nav_link', label: 'All', path: root_path %>
+    <%= render 'shared/nav_link', label: 'Active', path: active_items_path %>
+    <%= render 'shared/nav_link', label: 'Inactive', path: inactive_items_path %>
+    <%= render 'shared/nav_link', label: 'Borrowed', path: borrowed_items_path %>
+    <%= render 'shared/nav_link', label: 'On place', path: on_place_items_path %>
+    <li class="nav-item">
+      <%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'nav-link' %>
+    </li>
+  </div>
+</div>
