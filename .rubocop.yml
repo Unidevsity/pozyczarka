@@ -6,6 +6,8 @@ require:
 AllCops:
   Exclude:
     - 'bin/bundle'
+    - 'db/**/*'
+    - 'config/**/*'
 
 Style/IfUnlessModifier:
   Exclude:
