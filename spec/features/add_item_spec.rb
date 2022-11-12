@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 describe 'Add new item' do
+  let(:user) { create(:user) }
+
   before do
+    login_as user
     visit '/'
   end
 
