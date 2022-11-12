@@ -29,5 +29,5 @@ class Item < ApplicationRecord
   scope :borrowed, -> { where(borrowed: true) }
   scope :on_place, -> { where(borrowed: false) }
 
-  belongs_to :user
+  belongs_to :user, optional: true
 end
