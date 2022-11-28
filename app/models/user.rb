@@ -30,4 +30,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable
 
   has_many :items, dependent: :destroy
+  has_many :friendships, inverse_of: :user, dependent: :destroy
+  has_many :friends, through: :friendships
 end
