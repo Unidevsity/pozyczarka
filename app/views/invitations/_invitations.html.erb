@@ -6,7 +6,7 @@
         <div class="card-title">
           <%= invitation.inviting_user.email %>
         </div>
-        <p class="card-subtitle text-muted">
+        <p class="<%= invitation_status_class(invitation) %>">
           <%= invitation.state %>
         </p>
         <p>
@@ -27,7 +27,7 @@
         <div class="card-title">
           <%= invitation.inviting_user.email %>
         </div>
-        <p class="card-subtitle text-muted">
+        <p class="<%= invitation_status_class(invitation) %>">
           <%= invitation.state %>
         </p>
         <p>
