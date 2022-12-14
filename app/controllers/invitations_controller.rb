@@ -11,6 +11,16 @@ class InvitationsController < ApplicationController
     redirect_to friends_path
   end
 
+  def accept
+    invitation = current_user.received_invitations.find(params[:id])
+    invitation.accept!
+    if invitation.accepted?
+      current_user.friends << invitation.inviting_user
+      invitation.inviting_user.friends << current_user
+    end
+    redirect_to invitations_path
+  end
+
   private
 
   def invitation_params
