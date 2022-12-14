@@ -7,7 +7,7 @@
           <%= invitation.inviting_user.email %>
         </div>
         <p class="card-subtitle text-muted">
-          pending....
+          <%= invitation.state %>
         </p>
         <p>
           Sent <%= distance_of_time_in_words_to_now(invitation.created_at) %> ago
@@ -28,7 +28,7 @@
           <%= invitation.inviting_user.email %>
         </div>
         <p class="card-subtitle text-muted">
-          pending....
+          <%= invitation.state %>
         </p>
         <p>
           Sent <%= distance_of_time_in_words_to_now(invitation.created_at) %> ago
