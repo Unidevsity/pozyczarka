@@ -1,7 +1,7 @@
 class FriendsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @received_invitations = current_user.received_invitations
+    @received_invitations = current_user.received_invitations.not_processed
     @sent_invitations = current_user.sent_invitations
   end
 
