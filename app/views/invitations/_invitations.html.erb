@@ -1,0 +1,39 @@
+<div>
+  <h2>Received invitations</h2>
+  <% received_invitations.each do |invitation| %>
+    <div class="card mt-4">
+      <div class="card-body">
+        <div class="card-title">
+          <%= invitation.inviting_user.email %>
+        </div>
+        <p class="card-subtitle text-muted">
+          pending....
+        </p>
+        <p>
+          Sent <%= distance_of_time_in_words_to_now(invitation.created_at) %> ago
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <h2>
+    Sent invitations
+  </h2>
+  <% sent_invitations.each do |invitation| %>
+    <div class="card mt-4">
+      <div class="card-body">
+        <div class="card-title">
+          <%= invitation.inviting_user.email %>
+        </div>
+        <p class="card-subtitle text-muted">
+          pending....
+        </p>
+        <p>
+          Sent <%= distance_of_time_in_words_to_now(invitation.created_at) %> ago
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
