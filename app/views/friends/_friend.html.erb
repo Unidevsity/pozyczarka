@@ -1,0 +1,9 @@
+<div class="card mt-4">
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= friend.email %>
+    </h5>
+    <%= link_to 'Items', items_friend_path(friend), class: 'card-link' %>
+    <%= link_to 'Chat', chat_friend_path(friend), class: 'card-link' %>
+  </div>
+</div>

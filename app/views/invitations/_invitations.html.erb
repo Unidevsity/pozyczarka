@@ -1,43 +1,47 @@
-<div>
-  <h2>Received invitations</h2>
-  <% received_invitations.each do |invitation| %>
-    <div class="card mt-4">
-      <div class="card-body">
-        <div class="card-title">
-          <%= invitation.inviting_user.email %>
-        </div>
-        <p class="<%= invitation_status_class(invitation) %>">
-          <%= invitation.state %>
-        </p>
-        <p>
-          Sent <%= distance_of_time_in_words_to_now(invitation.created_at) %> ago
-        </p>
-        <div class="d-flex justify-content-end gap-2">
-          <%= link_to 'Accept', accept_invitation_path(invitation), class: 'btn btn-primary btn-sm', data: { turbo_method: :post } %>
-          <%= link_to 'Reject', reject_invitation_path(invitation), class: 'btn btn-danger btn-sm', data: { turbo_method: :post } %>
+<% if received_invitations.any? %>
+  <div>
+    <h2>Received invitations</h2>
+    <% received_invitations.each do |invitation| %>
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            <%= invitation.inviting_user.email %>
+          </div>
+          <p class="<%= invitation_status_class(invitation) %>">
+            <%= invitation.state %>
+          </p>
+          <p>
+            Sent <%= distance_of_time_in_words_to_now(invitation.created_at) %> ago
+          </p>
+          <div class="d-flex justify-content-end gap-2">
+            <%= link_to 'Accept', accept_invitation_path(invitation), class: 'btn btn-primary btn-sm', data: { turbo_method: :post } %>
+            <%= link_to 'Reject', reject_invitation_path(invitation), class: 'btn btn-danger btn-sm', data: { turbo_method: :post } %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>
 
-<div>
-  <h2>
-    Sent invitations
-  </h2>
-  <% sent_invitations.each do |invitation| %>
-    <div class="card mt-4">
-      <div class="card-body">
-        <div class="card-title">
-          <%= invitation.inviting_user.email %>
+<% if sent_invitations.any? %>
+  <div>
+    <h2>
+      Sent invitations
+    </h2>
+    <% sent_invitations.each do |invitation| %>
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            <%= invitation.inviting_user.email %>
+          </div>
+          <p class="<%= invitation_status_class(invitation) %>">
+            <%= invitation.state %>
+          </p>
+          <p>
+            Sent <%= distance_of_time_in_words_to_now(invitation.created_at) %> ago
+          </p>
         </div>
-        <p class="<%= invitation_status_class(invitation) %>">
-          <%= invitation.state %>
-        </p>
-        <p>
-          Sent <%= distance_of_time_in_words_to_now(invitation.created_at) %> ago
-        </p>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end  %>

@@ -1,0 +1,19 @@
+<%= render 'friends/friend', friend: @friend %>
+<h1>Items</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @friend.items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td>
+        <%= link_to 'Show', '#' %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

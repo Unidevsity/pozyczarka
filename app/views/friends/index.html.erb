@@ -30,3 +30,7 @@
 </div>
 
 <%= render 'invitations/invitations', received_invitations: @received_invitations, sent_invitations: @sent_invitations %>
+
+<% @friends.each do |friend| %>
+  <%= render 'friends/friend', friend: friend %>
+<% end %>
