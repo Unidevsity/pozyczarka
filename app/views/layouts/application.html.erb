@@ -26,6 +26,7 @@
   <div class="container-fluid">
     <p class="navbar-brand mb-0"><%= app_title %></p>
     <% if user_signed_in? %>
+      <%= turbo_stream_from [current_user, :notifications] %>
       <%= render 'shared/navbar' %>
     <% else %>
       <div class="navbar-nav">

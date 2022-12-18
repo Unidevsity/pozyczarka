@@ -3,6 +3,6 @@
     <%= notification.user.email %>
   </p>
   <p>
-    <%= notification.fetch('message', '') %>
+    <%= notification.data&.fetch('message', '') %>
   </p>
 </div>

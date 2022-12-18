@@ -10,6 +10,10 @@
     <%= render 'shared/nav_link', label: 'On place', path: on_place_items_path %>
     <%= render 'shared/nav_link', label: 'Friends', path: friends_path %>
     <%= render 'shared/nav_link', label: 'Notifications', path: notifications_path %>
+    <%= link_to notifications_path, class: nav_link_class(notifications_path) do %>
+      <span>Notifications</span>
+      <%= render 'notifications/notifications_badge', user: current_user %>
+    <% end %>
     <li class="nav-item">
       <%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'nav-link' %>
     </li>
