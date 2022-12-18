@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(user, :notifications_badge) do %>
   <% if user.notifications.count.positive? %>
     <span class="badge rounded-pill bg-danger">
-                <%= user.notifications.count %>
+                <%= user.notifications.unread.count %>
               </span>
   <% end %>
 <% end %>

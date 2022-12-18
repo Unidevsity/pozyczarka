@@ -1,8 +1,16 @@
-<div class="d-flex">
-  <p>
+<div class="d-flex justify-content-between">
+  <p class="<%= notification.unread? && 'fw-bold' %>">
     <%= notification.user.email %>
   </p>
-  <p>
-    <%= notification.data&.fetch('message', '') %>
-  </p>
+  <%= link_to notification.data&.fetch('path', notifications_path) do %>
+    <p class="<%= notification.unread? && 'fw-bold' %>">
+      <%= notification.data&.fetch('message', '') %>
+    </p>
+  <% end %>
+  <div class="d-flex flex-row gap-2">
+    <% if notification.unread? %>
+      <%= link_to 'Mark as Read', mark_as_read_notification_path(notification), class: 'btn btn-light min-width-btn', data: { turbo_method: :post } %>
+    <% end %>
+
+  </div>
 </div>

@@ -34,4 +34,12 @@ class Invitation < ApplicationRecord
   belongs_to :inviting_user, class_name: 'User', foreign_key: :invited_by_id
 
   scope :not_processed, -> { where.not(state: ['accepted', 'rejected'])}
+
+  after_create do
+    invited_user.notifications.create(data: {
+      message: "#{inviting_user.email} has invited you to friends.",
+      type: 'invitation',
+      path: '/friends'
+    })
+  end
 end
