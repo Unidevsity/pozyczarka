@@ -30,4 +30,9 @@ class Item < ApplicationRecord
   scope :on_place, -> { where(borrowed: false) }
 
   belongs_to :user, optional: true
+  has_many :rental_requests, dependent: :destroy
+
+  def requested_by?(requesting_user)
+    rental_requests.where(user_id: requesting_user.id).exists?
+  end
 end

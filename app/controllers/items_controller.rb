@@ -73,6 +73,18 @@ class ItemsController < ApplicationController
     @items = current_user.items.on_place
   end
 
+  def request_rent
+    item = Item.find(params[:id])
+    item.rental_requests.create!(user: current_user)
+    owner = item.user
+    owner.notifications.create(data: {
+                                  message: "User #{current_user.email} requested to rent your item #{item.name}",
+                                  type: 'rental_request',
+                                  path: item_path(item)
+    })
+    redirect_to items_friend_path(owner)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
       get :borrowed
       get :on_place
     end
+    member do
+      post :request_rent
+    end
   end
 
   resources :friends, only: %i[index show] do
