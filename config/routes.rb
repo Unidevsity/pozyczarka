@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     member do
       post :request_rent
+      post :return_item
     end
   end
 
@@ -35,6 +36,13 @@ Rails.application.routes.draw do
     end
     member do
       post :mark_as_read
+    end
+  end
+
+  resources :rental_requests, only: %i[] do
+    member do
+      post :accept
+      post :reject
     end
   end
 end

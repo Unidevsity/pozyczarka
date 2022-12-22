@@ -18,8 +18,35 @@
       <%= form.label :item_type %>
       <%= form.select :item_type, Item.item_types.keys, {}, class: 'form-select', disabled: true %>
     </div>
+    <% if @item.borrowed && @item.borrowed_to %>
+      <div class="d-flex flex-column">
+        <p><%= @item.borrowed_to&.email %></p>
+        <p><%= distance_of_time_in_words_to_now(@item.borrowed_at) %> ago</p>
+      </div>
+    <% end %>
   <% end %>
-  <%= link_to 'Edit', edit_item_path(@item),class:"btn btn-primary min-width-btn" %>
-  <%= link_to 'Back', items_path,class:"btn btn-light min-width-btn" %>
+  <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-primary min-width-btn" %>
+  <%= link_to 'Back', items_path, class: "btn btn-light min-width-btn" %>
   <%= link_to 'Delete', item_path(@item), class: 'btn btn-danger', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+  <% if @item.borrowed %>
+    <%= link_to 'Return', return_item_item_path(@item), data: { turbo_method: :post } %>
+  <% end %>
+
+  <% if @item.requested? %>
+    <hr/>
+    <div class="d-flex flex-column">
+      <% @item.rental_requests.each do |request| %>
+        <div class="d-flex flex-row justify-content-between border-bottom">
+          <div class="d-flex flex-column">
+            <p><%= request.user.email %></p>
+            <p><%= distance_of_time_in_words_to_now(request.created_at) %> ago</p>
+          </div>
+          <div>
+            <%= link_to 'Accept', accept_rental_request_path(request), class: 'text-success', data: { turbo_method: :post, turbo_confirm: "Are you sure you want to borrow this item to #{request.user.email}?" } %>
+            <%= link_to 'Reject', reject_rental_request_path(request), class: 'text-danger', data: { turbo_method: :post, turbo_confirm: 'Are you sure you want to reject this request?' } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>

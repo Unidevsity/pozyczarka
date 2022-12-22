@@ -6,6 +6,11 @@
       <th class="text-center">Active</th>
       <th class="text-center">Borrowed</th>
       <th class="text-center">Type</th>
+      <% if action_name == 'borrowed' %>
+        <th class="text-center">
+          Borrowed to:
+        </th>
+      <% end %>
       <th>Actions</th>
     </tr>
     </thead>
@@ -16,8 +21,19 @@
         <td class="text-center"><%= item.active ? '✅' : '❌' %></td>
         <td class="text-center"><%= item.borrowed ? '✅' : '❌' %></td>
         <td class="text-center"><%= item.item_type %></td>
+        <% if action_name == 'borrowed' %>
+          <td class="text-center">
+            <%= item.borrowed_to.email %> <%= distance_of_time_in_words_to_now(item.borrowed_at) %>
+            ago
+          </td>
+        <% end %>
         <td>
           <%= link_to "Show this item", item, class: 'btn btn-primary' %>
+          <% if item.requested? %>
+            <span class="badge badge-round-pill bg-success">
+              Requests: <%= item.rental_requests.count %>
+            </span>
+          <% end %>
         </td>
       </tr>
     <% end %>

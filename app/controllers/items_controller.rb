@@ -85,6 +85,12 @@ class ItemsController < ApplicationController
     redirect_to items_friend_path(owner)
   end
 
+  def return_item
+    item = current_user.items.find(params[:id])
+    item.update(borrowed: false, borrowed_at: nil, borrowed_to_id: nil)
+    redirect_to items_path
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
