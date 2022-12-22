@@ -9,8 +9,9 @@
           <div class="card-header d-flex justify-content-between align-items-center p-3">
             <h5 class="mb-0">Chat</h5>
           </div>
-          <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+          <div class="card-body" id="messages" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px; overflow-y: scroll;">
 
+            <%= turbo_stream_from [current_user, :messages] %>
             <% @messages.each do |message| %>
               <%= render 'messages/message', message: message, current_user: current_user %>
             <% end %>
