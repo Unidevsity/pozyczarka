@@ -16,7 +16,8 @@ class FriendsController < ApplicationController
   end
 
   def chat
-    friend
+    @messages = Message.between(current_user, friend)
+    @message = Message.new(receipient_id: friend.id, sender_id: current_user.id)
   end
 
   private

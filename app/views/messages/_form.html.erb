@@ -1,0 +1,4 @@
+<%= form_with model: message, class: 'w-100' do |f| %>
+  <%= hidden_field_tag 'message[receipient_id]', message.receipient_id %>
+  <%= f.text_field :body, class: 'form-control form-control-lg', placeholder: 'Type message' %>
+<% end %>

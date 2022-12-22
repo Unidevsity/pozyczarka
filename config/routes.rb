@@ -45,4 +45,6 @@ Rails.application.routes.draw do
       post :reject
     end
   end
+
+  resource :messages, only: %i[create]
 end
