@@ -19,6 +19,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'aasm'
+gem 'devise_invitable', '~> 2.0.0'
 
 group :development, :test do
   gem 'brakeman'
@@ -35,6 +36,7 @@ group :development do
   gem 'annotate'
   gem 'hotwire-livereload'
   gem 'web-console'
+  gem "letter_opener"
 end
 
 group :test do
