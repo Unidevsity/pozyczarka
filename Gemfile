@@ -35,6 +35,7 @@ group :development do
   gem 'annotate'
   gem 'hotwire-livereload'
   gem 'web-console'
+  gem 'letter_opener'
 end
 
 group :test do
