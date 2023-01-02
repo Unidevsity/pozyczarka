@@ -7,6 +7,8 @@ class InvitationsController < ApplicationController
       Invitation.find_or_create_by!(invited_by_id: current_user.id, invited_id: user.id)
     else
       # TODO wysyłanie zaproszenia emailem
+      user = User.invite!(email: invitation_params[:email])
+      user.update(invited_by_id: current_user.id)
     end
     redirect_to friends_path
   end
