@@ -1,0 +1,4 @@
+:schedule:
+  test:
+    cron: "* * * * *"
+    class: "TestJob"

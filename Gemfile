@@ -20,7 +20,6 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'aasm'
 gem 'devise_invitable', '~> 2.0.0'
-gem 'sidekiq'
 
 group :development, :test do
   gem 'brakeman'
@@ -40,6 +39,7 @@ group :development do
   gem "letter_opener"
 end
 
+
 group :test do
   gem 'capybara'
   gem 'database_cleaner-active_record'
@@ -48,3 +48,6 @@ group :test do
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'shoulda-matchers', '~> 5.0'
 end
+
+gem "sidekiq", "~> 6.5"
+gem "sidekiq-scheduler", "~> 4.0"
