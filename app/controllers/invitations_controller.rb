@@ -3,12 +3,10 @@ class InvitationsController < ApplicationController
 
   def create
     user = User.find_by_email(invitation_params[:email])
-    if user
-      Invitation.find_or_create_by!(invited_by_id: current_user.id, invited_id: user.id)
-    else
+    unless user
       user = User.invite!(email: invitation_params[:email])
-      user.update!(invited_by_id: current_user.id)
     end
+    Invitation.find_or_create_by!(invited_by_id: current_user.id, invited_id: user.id)
     redirect_to friends_path
   end
 

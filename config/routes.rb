@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { invitations: 'users/invitations' }
   root 'items#index'
   resources :items do
     collection do
