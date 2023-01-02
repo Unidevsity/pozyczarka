@@ -1,0 +1,10 @@
+<h1><%= @email %> pyta o przedmiot</h1>
+
+<p>
+  Użytkownik z adresem email <%= @email %> chce pożyczyć przedmiot <%= @item.name %>
+</p>
+
+<p>
+  Jeśli chcesz zaakceptować prośbę, kliknij w poniższy link:
+  <%= link_to 'Klik', item_url(@item) %>
+</p>
