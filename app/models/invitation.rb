@@ -36,10 +36,11 @@ class Invitation < ApplicationRecord
   scope :not_processed, -> { where.not(state: ['accepted', 'rejected'])}
 
   after_create do
-    invited_user.notifications.create(data: {
+    notification_data = {
       message: "#{inviting_user.email} has invited you to friends.",
       type: 'invitation',
       path: '/friends'
-    })
+    }
+    NotificationsJob.perform_later(invited_user.id, notification_data)
   end
 end

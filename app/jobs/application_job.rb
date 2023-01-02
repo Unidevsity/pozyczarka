@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ApplicationJob < ActiveJob::Base
-  # Automatically retry jobs that encountered a deadlock
-  # retry_on ActiveRecord::Deadlocked
+  # sidekiq
+  queue_as :default
 
-  # Most jobs are safe to ignore if the underlying records are no longer available
-  # discard_on ActiveJob::DeserializationError
+  self.queue_adapter = :sidekiq
+
 end

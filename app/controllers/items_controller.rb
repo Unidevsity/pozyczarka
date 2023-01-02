@@ -77,12 +77,13 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.rental_requests.create!(user: current_user)
     owner = item.user
-    owner.notifications.create(data: {
-                                  message: "User #{current_user.email} requested to rent your item #{item.name}",
-                                  type: 'rental_request',
-                                  path: item_path(item)
-    })
-    RentalRequestMailer.ask(owner, current_user, item).deliver_now
+    notification_data = {
+      message: "User #{current_user.email} requested to rent your item #{item.name}",
+      type: 'rental_request',
+      path: item_path(item)
+    }
+    NotificationsJob.perform_later(owner.id, notification_data)
+    RentalRequestJob.perform_later(owner.id, current_user.id, item.id)
     redirect_to items_friend_path(owner)
   end
 
